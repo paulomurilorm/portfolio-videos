@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Paulo Murilo — Editor de Vídeo | Portfólio</title>
+  <meta name="description" content="Portfólio de edição de vídeo: shorts para redes sociais, vídeos longos e produções comerciais que conectam, comunicam e geram impacto.">
+  <meta name="theme-color" content="#0B0B0E">
+  <meta name="color-scheme" content="dark">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Paulo Murilo — Editor de Vídeo">
+  <meta property="og:description" content="Transformando ideias em histórias visuais. Shorts, vídeos longos e produções comerciais.">
+
+  <link rel="icon" href="./front-end/img/favicon.svg" type="image/svg+xml">
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Sora:wght@500;600;700&display=swap">
+
+  <!-- Estilos (ordem importa: tokens → layout → componentes → seções → animações) -->
+  <link rel="stylesheet" href="./front-end/css/base.css">
+  <link rel="stylesheet" href="./front-end/css/layout.css">
+  <link rel="stylesheet" href="./front-end/css/components.css">
+  <link rel="stylesheet" href="./front-end/css/sections.css">
+  <link rel="stylesheet" href="./front-end/css/animations.css">
+
+  <!-- Indica que o JS está ativo (habilita animações de entrada sem esconder conteúdo para quem não tem JS) -->
+  <script>document.documentElement.classList.add('js');</script>
+  <script type="module" src="./front-end/js/main.js"></script>
+</head>
+<body>
+  <!-- Sprite de ícones SVG (referenciados com <use href="#icon-nome">) -->
+  <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="icon-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="icon-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M8 5.6v12.8a1 1 0 0 0 1.52.85l10.2-6.4a1 1 0 0 0 0-1.7L9.52 4.75A1 1 0 0 0 8 5.6z"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7.5 8.5 6 8.5-6"/></symbol>
+    <symbol id="icon-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M15 9V6.5A2.5 2.5 0 0 0 12.5 4h-6A2.5 2.5 0 0 0 4 6.5v6A2.5 2.5 0 0 0 6.5 15H9"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path d="M12 3.25a8.75 8.75 0 0 0-7.55 13.16L3.25 20.75l4.45-1.16A8.75 8.75 0 1 0 12 3.25z"/><path fill="currentColor" stroke="none" d="M15.9 13.67c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06a6.55 6.55 0 0 1-3.27-2.86c-.25-.43.25-.4.71-1.32.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46a.89.89 0 0 0-.64.3 2.7 2.7 0 0 0-.84 2c0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64 1.53.66 2.13.72 2.9.6.47-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/></symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-youtube" viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path fill="currentColor" stroke="none" d="M10 9.2v5.6l4.9-2.8z"/></symbol>
+    <symbol id="icon-tiktok" viewBox="0 0 24 24"><path d="M14 3.5v11a3.75 3.75 0 1 1-3.75-3.75"/><path d="M14 3.5c.4 2.6 2.4 4.6 5 4.9"/></symbol>
+    <symbol id="icon-linkedin" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3.5"/><path d="M8 10.5V16.5M8 7.6v.01M11.75 16.5v-6M11.75 13.25a2.6 2.6 0 0 1 5.2 0v3.25"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <noscript>
+    <p class="noscript">Ative o JavaScript para navegar pelo portfólio completo e assistir aos vídeos.</p>
+  </noscript>
+
+  <!-- ===================================================================
+       CABEÇALHO / NAVEGAÇÃO
+       =================================================================== -->
+  <header class="header" data-header>
+    <div class="container header__inner">
+      <a class="logo" href="#inicio" aria-label="Paulo Murilo, editor de vídeo — voltar ao início">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">Paulo Murilo<small>Video Editor</small></span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu" data-nav-toggle>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav class="nav" id="menu-principal" aria-label="Navegação principal" data-nav>
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#inicio" data-nav-link>Início</a></li>
+          <li><a class="nav__link" href="#portfolio" data-nav-link>Portfólio</a></li>
+          <li><a class="nav__link" href="#sobre" data-nav-link>Sobre</a></li>
+          <li><a class="nav__link" href="#contato" data-nav-link>Contato</a></li>
+        </ul>
+        <a class="btn btn--primary btn--sm nav__cta" href="#contato">
+          Vamos conversar
+          <svg class="icon icon--arrow" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+
+    <!-- ===================================================================
+         1. HOME — HERO
+         =================================================================== -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__glow"></div>
+        <div class="hero__grid"></div>
+        <div class="hero__grain"></div>
+      </div>
+
+      <!-- Cantos de "visor de câmera" -->
+      <div class="hero__frame" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="container hero__content">
+        <p class="eyebrow hero__eyebrow fade-up" style="--d: .15s">
+          <span class="rec-dot" aria-hidden="true"></span>
+          Editor de vídeo · Motion · Storytelling
+        </p>
+
+        <h1 class="hero__title" id="hero-title">
+          <span class="hero__line"><span>Transformando ideias</span></span>
+          <span class="hero__line"><span>em <em>histórias visuais.</em></span></span>
+        </h1>
+
+        <p class="hero__subtitle fade-up" style="--d: .45s">
+          De conteúdos para redes sociais a produções comerciais, transformo ideias em vídeos que conectam, comunicam e geram impacto.
+        </p>
+
+        <div class="hero__actions fade-up" style="--d: .6s">
+          <a class="btn btn--primary btn--lg" href="#portfolio">
+            Explorar trabalhos
+            <svg class="icon icon--arrow" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+          </a>
+          <a class="btn btn--ghost btn--lg" href="#destaque">
+            <svg class="icon" aria-hidden="true"><use href="#icon-play"/></svg>
+            Ver destaque
+          </a>
+        </div>
+      </div>
+
+      <!-- Timeline decorativa de edição (animada via JS) -->
+      <div class="container hero__timeline" aria-hidden="true" data-timeline>
+        <div class="timeline__meta">
+          <span class="timeline__rec">REC</span>
+          <span class="timeline__tc" data-timecode>00:00:00:00</span>
+          <span class="timeline__spec">4K · 24 FPS · 16:9 / 9:16</span>
+        </div>
+        <div class="timeline__tracks">
+          <div class="timeline__track timeline__track--v2">
+            <span class="timeline__label">V2</span>
+            <div class="timeline__clips">
+              <span class="clip clip--gap" style="--w: 14"></span>
+              <span class="clip clip--title" style="--w: 10"></span>
+              <span class="clip clip--gap" style="--w: 30"></span>
+              <span class="clip clip--title" style="--w: 8"></span>
+              <span class="clip clip--gap" style="--w: 38"></span>
+            </div>
+          </div>
+          <div class="timeline__track">
+            <span class="timeline__label">V1</span>
+            <div class="timeline__clips">
+              <span class="clip" style="--w: 9"></span>
+              <span class="clip clip--accent" style="--w: 14"></span>
+              <span class="clip" style="--w: 6"></span>
+              <span class="clip" style="--w: 11"></span>
+              <span class="clip clip--accent" style="--w: 8"></span>
+              <span class="clip" style="--w: 16"></span>
+              <span class="clip" style="--w: 7"></span>
+              <span class="clip clip--accent" style="--w: 12"></span>
+              <span class="clip" style="--w: 17"></span>
+            </div>
+          </div>
+          <div class="timeline__track timeline__track--audio">
+            <span class="timeline__label">A1</span>
+            <div class="timeline__clips">
+              <span class="clip clip--audio" style="--w: 46"></span>
+              <span class="clip clip--audio" style="--w: 54"></span>
+            </div>
+          </div>
+          <div class="timeline__playhead" data-playhead></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         2. VÍDEO EM DESTAQUE
+         =================================================================== -->
+    <section class="section featured" id="destaque" aria-labelledby="destaque-title">
+      <div class="container">
+        <header class="section-head section-head--split" data-reveal>
+          <div class="section-head__titles">
+            <p class="eyebrow"><span class="eyebrow__index">01</span> Em destaque</p>
+            <h2 class="section-title" id="destaque-title">Storytelling em formato longo</h2>
+          </div>
+          <p class="section-lead">
+            Um dos meus vídeos longos sobre animes, com ritmo, trilha e cortes pensados para manter o público assistindo até o fim.
+          </p>
+        </header>
+
+        <div class="featured__stage" data-reveal>
+          <!-- O player (miniatura + botão de play) é montado via JS a partir de config/site.js -->
+          <div class="player" data-featured-player></div>
+        </div>
+
+        <dl class="featured__meta" data-reveal>
+          <div><dt>Categoria</dt><dd>Vídeos longos · Animes</dd></div>
+          <div><dt>Formato</dt><dd>Horizontal 16:9</dd></div>
+          <div><dt>Funções</dt><dd>Edição, motion e color</dd></div>
+          <div><dt>Ferramentas</dt><dd>Premiere Pro · After Effects</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         3. PORTFÓLIO DINÂMICO
+         Categorias, subcategorias e cards são criados via JS
+         a partir de data/categorias.js e data/projetos.js
+         =================================================================== -->
+    <section class="section portfolio" id="portfolio" aria-labelledby="portfolio-title" data-portfolio>
+      <div class="container">
+        <header class="section-head section-head--split" data-reveal>
+          <div class="section-head__titles">
+            <p class="eyebrow"><span class="eyebrow__index">02</span> Portfólio</p>
+            <h2 class="section-title" id="portfolio-title">Projetos que prendem a atenção</h2>
+          </div>
+          <p class="section-lead">
+            Navegue por formato e nicho. Cada vídeo foi pensado para prender nos primeiros segundos e comunicar com clareza até o último frame.
+          </p>
+        </header>
+
+        <div class="filters" data-reveal>
+          <div class="filters__row">
+            <span class="filters__label" id="rotulo-categorias">Formato</span>
+            <div class="filters__options" role="group" aria-labelledby="rotulo-categorias" data-categories></div>
+          </div>
+          <!-- O painel de subcategorias é criado/substituído a cada clique em uma categoria -->
+          <div class="filters__slot" data-subcategories></div>
+        </div>
+
+        <div class="gallery-bar">
+          <p class="gallery-bar__status" aria-live="polite" data-gallery-status></p>
+          <span class="gallery-bar__format" data-gallery-format></span>
+        </div>
+
+        <ul class="gallery" id="galeria" aria-label="Vídeos do portfólio" data-gallery></ul>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         4. SOBRE MIM
+         =================================================================== -->
+    <section class="section about" id="sobre" aria-labelledby="sobre-title">
+      <div class="container about__grid">
+        <figure class="about__media" data-reveal>
+          <div class="about__photo">
+            <img src="./front-end/img/paulo-murilo.webp" alt="Foto de Paulo Murilo" width="680" height="1088" loading="lazy" decoding="async">
+          </div>
+          <figcaption class="about__badge">
+            <span class="rec-dot" aria-hidden="true"></span>
+            Disponível para novos projetos
+          </figcaption>
+        </figure>
+
+        <div class="about__content">
+          <header class="about__head" data-reveal>
+            <p class="eyebrow"><span class="eyebrow__index">03</span> Sobre mim</p>
+            <h2 class="section-title" id="sobre-title">Edição com intenção: cada corte tem um porquê.</h2>
+          </header>
+
+          <div class="about__text" data-reveal>
+            <p class="about__lead">
+              Trabalho com edição de vídeo há mais de 5 anos, ajudando criadores de conteúdo, empresas e marcas a transformar ideias brutas em vídeos que prendem a atenção e geram resultado.
+            </p>
+            <p>
+              Meu processo une técnica e estratégia: entendo o público, o objetivo e a plataforma antes do primeiro corte. Do roteiro ao export final, cuido de ritmo, legendas, motion graphics, tratamento de cor e design de som.
+            </p>
+          </div>
+
+          <ul class="tools" aria-label="Ferramentas" data-reveal>
+            <li class="tool">
+              <span class="tool__mono" aria-hidden="true">Pr</span>
+              <h3 class="tool__name">Adobe Premiere Pro</h3>
+              <p class="tool__desc">Montagem, ritmo, tratamento de cor e mixagem de áudio.</p>
+            </li>
+            <li class="tool">
+              <span class="tool__mono" aria-hidden="true">Ae</span>
+              <h3 class="tool__name">Adobe After Effects</h3>
+              <p class="tool__desc">Motion graphics, legendas animadas e tipografia cinética.</p>
+            </li>
+            <li class="tool">
+              <span class="tool__mono" aria-hidden="true">Cc</span>
+              <h3 class="tool__name">CapCut</h3>
+              <p class="tool__desc">Agilidade em formatos verticais, trends e entregas rápidas.</p>
+            </li>
+          </ul>
+
+          <!-- SUBSTITUA pelos seus números reais -->
+          <ul class="stats" data-reveal>
+            <li class="stat">
+              <span class="stat__value"><span class="stat__plus">+</span><span data-count-to="150">150</span></span>
+              <span class="stat__label">projetos entregues</span>
+            </li>
+            <li class="stat">
+              <span class="stat__value"><span class="stat__plus">+</span><span data-count-to="5">5</span></span>
+              <span class="stat__label">anos de experiência</span>
+            </li>
+            <li class="stat">
+              <span class="stat__value"><span class="stat__plus">+</span><span data-count-to="500">500</span>K</span>
+              <span class="stat__label">visualizações geradas</span>
+            </li>
+          </ul>
+
+          <ul class="tags" aria-label="Serviços" data-reveal>
+            <li>Reels &amp; TikTok</li>
+            <li>YouTube</li>
+            <li>Publicidade</li>
+            <li>Institucional</li>
+            <li>Motion graphics</li>
+            <li>Color grading</li>
+            <li>Sound design</li>
+            <li>Legendas dinâmicas</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faixa decorativa em movimento -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <div class="marquee__group">
+          <span>Edição</span><i></i><span>Motion graphics</span><i></i><span>Color grading</span><i></i><span>Sound design</span><i></i><span>Storytelling</span><i></i>
+        </div>
+        <div class="marquee__group">
+          <span>Edição</span><i></i><span>Motion graphics</span><i></i><span>Color grading</span><i></i><span>Sound design</span><i></i><span>Storytelling</span><i></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================================
+         5. CONTATO
+         Botão de WhatsApp, e-mail e redes são criados via JS (config/site.js)
+         =================================================================== -->
+    <section class="section contact" id="contato" aria-labelledby="contato-title">
+      <div class="container">
+        <div class="contact__card" data-reveal>
+          <div class="contact__main">
+            <p class="eyebrow"><span class="eyebrow__index">04</span> Contato</p>
+            <h2 class="contact__title" id="contato-title">
+              Tem uma ideia?
+              <span>Vamos colocá-la em movimento.</span>
+            </h2>
+            <p class="contact__lead">
+              Conte um pouco sobre o seu projeto: objetivo, prazo e onde o vídeo será publicado. Respondo em até 24 horas úteis com uma proposta sob medida.
+            </p>
+            <div class="contact__actions" data-contact-actions></div>
+          </div>
+
+          <div class="contact__aside">
+            <p class="contact__aside-title">Acompanhe nas redes</p>
+            <ul class="socials" aria-label="Redes sociais" data-socials></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================================
+       RODAPÉ
+       =================================================================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a class="logo logo--small" href="#inicio" aria-label="Paulo Murilo — voltar ao início">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">Paulo Murilo</span>
+      </a>
+      <p class="footer__copy">© <span data-year>2026</span> Paulo Murilo. Todos os direitos reservados.</p>
+      <a class="to-top" href="#inicio">
+        Voltar ao topo
+        <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Região de avisos (toasts) lida por leitores de tela -->
+  <div class="toast-region" role="status" aria-live="polite" data-toast-region></div>
+</body>
+</html>

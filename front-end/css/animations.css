@@ -1,0 +1,154 @@
+/* ==========================================================================
+   ANIMAÇÕES — keyframes, entrada por scroll e preferências de movimento
+   ========================================================================== */
+
+/* ---------- Entrada inicial (hero) ---------- */
+.fade-up {
+  animation: fade-up 0.9s var(--ease-out) both;
+  animation-delay: var(--d, 0s);
+}
+
+/* ---------- Revelação por scroll (ativada só com JS) ---------- */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s ease, transform 1s var(--ease-out);
+}
+
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+}
+
+@keyframes line-up {
+  from { transform: translateY(110%); }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.98);
+  }
+}
+
+@keyframes card-out {
+  to {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.97);
+  }
+}
+
+@keyframes modal-out {
+  to {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+}
+
+@keyframes toast-out {
+  to {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes rec-pulse {
+  0% { box-shadow: 0 0 0 0 var(--c-red-glow); }
+  70%, 100% { box-shadow: 0 0 0 8px rgba(215, 38, 56, 0); }
+}
+
+@keyframes play-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(215, 38, 56, 0.55); }
+  70%, 100% { box-shadow: 0 0 0 26px rgba(215, 38, 56, 0); }
+}
+
+@keyframes blink {
+  to { visibility: hidden; }
+}
+
+@keyframes glow-drift {
+  to { transform: translate3d(-3%, 4%, 0) scale(1.05); }
+}
+
+@keyframes grain {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(-8%, 6%); }
+  40%  { transform: translate(6%, -10%); }
+  60%  { transform: translate(-12%, -4%); }
+  80%  { transform: translate(10%, 8%); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero__grain,
+  .marquee__track {
+    animation: none !important;
+  }
+}

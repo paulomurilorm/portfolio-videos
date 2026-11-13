@@ -1,0 +1,353 @@
+/* ==========================================================================
+   LAYOUT — cabeçalho, navegação, estrutura de seções e rodapé
+   ========================================================================== */
+
+/* ---------- Cabeçalho ---------- */
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  height: var(--header-h);
+  border-bottom: 1px solid transparent;
+  /* Importante: não animar backdrop-filter (ele cria containing block p/ o menu fixo) */
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.header.is-scrolled {
+  background-color: rgba(11, 11, 14, 0.78);
+  border-color: var(--c-line);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  backdrop-filter: saturate(140%) blur(14px);
+}
+
+.header.is-menu-open {
+  background-color: transparent;
+  border-color: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.header__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* ---------- Logo ---------- */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+}
+
+.logo__mark {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--c-red);
+  box-shadow: 0 8px 24px -10px var(--c-red-glow);
+  transition: transform 0.5s var(--ease-out);
+}
+
+/* Triângulo de "play" desenhado com clip-path */
+.logo__mark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 12px;
+  height: 14px;
+  translate: 1.5px 0;
+  background: var(--c-white);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.logo:hover .logo__mark {
+  transform: rotate(-8deg) scale(1.05);
+}
+
+.logo__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.logo__text small {
+  margin-top: 4px;
+  font-family: var(--f-mono);
+  font-weight: 400;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+}
+
+.logo--small .logo__mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+}
+
+.logo--small .logo__mark::after {
+  width: 10px;
+  height: 12px;
+}
+
+/* ---------- Navegação (desktop) ---------- */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav__list {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.nav__link {
+  position: relative;
+  display: inline-block;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--c-muted);
+  transition: color 0.25s ease;
+}
+
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 0.3rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--c-red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.nav__link:hover,
+.nav__link.is-active {
+  color: var(--c-text);
+}
+
+.nav__link:hover::after,
+.nav__link.is-active::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Botão do menu (mobile) ---------- */
+.nav-toggle {
+  display: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--c-line-strong);
+  place-content: center;
+  gap: 6px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-toggle:hover {
+  border-color: var(--c-red);
+}
+
+.nav-toggle__bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.header.is-menu-open .nav-toggle {
+  background: var(--c-red);
+  border-color: var(--c-red);
+}
+
+.header.is-menu-open .nav-toggle__bar:nth-child(1) {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.header.is-menu-open .nav-toggle__bar:nth-child(2) {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+@media (max-width: 899.98px) {
+  .nav-toggle {
+    display: inline-grid;
+  }
+
+  .nav {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: calc(var(--header-h) + 1rem) var(--gutter) 3rem;
+    background:
+      radial-gradient(80% 60% at 100% 0%, rgba(215, 38, 56, 0.22), transparent 70%),
+      var(--c-black);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+
+  .header.is-menu-open .nav {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    gap: 0.25rem;
+    counter-reset: nav;
+  }
+
+  .nav__list li {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.6s var(--ease-out);
+  }
+
+  .header.is-menu-open .nav__list li {
+    opacity: 1;
+    transform: none;
+  }
+
+  .header.is-menu-open .nav__list li:nth-child(2) { transition-delay: 0.05s; }
+  .header.is-menu-open .nav__list li:nth-child(3) { transition-delay: 0.1s; }
+  .header.is-menu-open .nav__list li:nth-child(4) { transition-delay: 0.15s; }
+
+  .nav__link {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.3rem 0;
+    font-family: var(--f-display);
+    font-size: clamp(2.25rem, 10vw, 3.25rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--c-text);
+  }
+
+  .nav__link::before {
+    counter-increment: nav;
+    content: "0" counter(nav);
+    font-family: var(--f-mono);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--c-red);
+  }
+
+  .nav__link::after {
+    display: none;
+  }
+
+  .nav__link.is-active {
+    color: var(--c-red);
+  }
+}
+
+/* ---------- Seções ---------- */
+.section {
+  position: relative;
+  padding-block: clamp(4.5rem, 10vw, 8rem);
+}
+
+.section-head {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.section-head__titles {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .section-head--split {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    align-items: end;
+    gap: 3rem;
+  }
+}
+
+.section-title {
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.section-lead {
+  max-width: 54ch;
+  font-size: clamp(1rem, 1.3vw, 1.1rem);
+  color: var(--c-muted);
+}
+
+/* ---------- Rodapé ---------- */
+.footer {
+  border-top: 1px solid var(--c-line);
+  padding-block: 2.25rem;
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+}
+
+.footer__copy {
+  font-size: 0.875rem;
+  color: var(--c-subtle);
+}
+
+.to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  transition: color 0.25s ease;
+}
+
+.to-top .icon {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.to-top:hover {
+  color: var(--c-red);
+}
+
+.to-top:hover .icon {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 599.98px) {
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
