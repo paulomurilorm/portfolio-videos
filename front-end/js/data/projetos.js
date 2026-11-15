@@ -135,7 +135,7 @@ export const projetos = [
     categoria: 'shorts',
     subcategoria: 'camisetas',
     thumbnail: '',
-    youtubeId: 'NPKiqvou2h8',
+    youtubeId: 'rKhICmAlk54',
     formato: 'vertical',
   },
   {
